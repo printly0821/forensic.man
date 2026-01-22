@@ -10,6 +10,7 @@ Comprehensive speech analysis for forensic applications including:
 - Deepfake detection with CNN-LSTM
 - XAI explanations with GradCAM and SHAP
 - Legal report generation (Daubert standard)
+- E2E streaming processing (Chroma-style architecture)
 """
 
 from forensic.speech.diarizer import DiarizationConfig, Diarizer
@@ -17,6 +18,12 @@ from forensic.speech.features import AudioFeatureExtractor, FeatureConfig
 from forensic.speech.prosody import ProsodyConfig, ProsodyExtractor
 from forensic.speech.transcriber import Transcriber, TranscriptionConfig
 from forensic.speech.vad import ProbabilisticVAD, VadConfig, VoiceActivityDetector
+
+# New E2E streaming modules (lazy import to avoid circular dependencies)
+# Available as:
+# - from forensic.speech.e2e import StreamingProcessor
+# - from forensic.speech.adapters import WhisperStreamingAdapter
+# - from forensic.speech.unified import TranscriberFactory
 
 __all__ = [
     # Core modules
@@ -34,4 +41,4 @@ __all__ = [
 ]
 
 # Version info
-__version__ = "0.1.0"
+__version__ = "0.2.0"
