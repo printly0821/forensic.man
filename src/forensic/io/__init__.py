@@ -7,6 +7,7 @@ monitoring optimized for DGX Spark environments.
 Modules:
     memory: Memory monitoring with threshold-based adjustments.
     reader: Streaming file reader with encoding detection.
+    async_io: Async streaming file reader and concurrent batch processor.
     chunk: Chunk processor for parsing text segments.
     buffer: Buffer manager for chunk boundary handling.
     merger: Segment merger for split segment handling.
@@ -16,6 +17,18 @@ Modules:
 """
 
 # Phase 3: Batch processing modules
+from forensic.io.async_io import (
+    DEFAULT_MAX_CONCURRENT,
+    AsyncBatchConfig,
+    AsyncBatchResult,
+    AsyncFileProcessingError,
+    AsyncStreamReader,
+    AsyncStreamReaderProtocol,
+    AsyncTranscriptBatchProcessor,
+    process_directory_async,
+    process_files_async,
+    read_file_streaming_async,
+)
 from forensic.io.batch import (
     BatchConfig,
     BatchProcessingError,
@@ -150,6 +163,17 @@ __all__ = [
     "FileNotOpenError",
     "EncodingDetectionError",
     "read_file_streaming",
+    # Async module (Phase 4)
+    "AsyncStreamReader",
+    "AsyncStreamReaderProtocol",
+    "AsyncTranscriptBatchProcessor",
+    "AsyncBatchConfig",
+    "AsyncBatchResult",
+    "AsyncFileProcessingError",
+    "DEFAULT_MAX_CONCURRENT",
+    "read_file_streaming_async",
+    "process_files_async",
+    "process_directory_async",
     # Discovery module (Phase 3)
     "FileDiscovery",
     "FileDiscoveryProtocol",
